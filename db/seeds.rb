@@ -7,13 +7,21 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 20.times do
+  user = User.create!(
+    username: Faker::Internet.username,
+    password: Faker::Internet.password,
+    image_url: Faker::Internet.url
+  )
+
   Performance.create!(
     name: Faker::Movie.title,
     venue: Faker::Address.full_address,
     price: Faker::Commerce.price,
-    description: Faker::paragraph,
-    image_url: Faker::internet.url,
+    description: Faker::Lorem.paragraph,
+    image_url: Faker::Internet.url,
     date: Faker::Date.in_date_period,
-    user_id: Faker::Internet.username
+    user: user
   )
 end
+
+p "created #{Performance.count} performances"
