@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Performance.destroy_all
+
 20.times do
   user = User.create!(
     username: Faker::Internet.username,
