@@ -1,4 +1,4 @@
-class PerformancesController < ApplicationController
+class Api::V1::PerformancesController < Api::V1::BaseController
   before_action :set_performance, only: [ :show, :edit, :update, :destroy ]
 
   def index
