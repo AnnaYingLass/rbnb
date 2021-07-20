@@ -15,9 +15,10 @@ class Api::V1::PerformancesController < Api::V1::BaseController
   def create
     @performance = Performance.new(performance_params)
     if @performance.save
-      redirect_to performances_path
+      render :show, status: :created
+      # redirect_to performances_path
     else
-      render :new
+      render_error
     end
   end
 
@@ -25,13 +26,18 @@ class Api::V1::PerformancesController < Api::V1::BaseController
   end
 
   def update
-    @performance.update(performance_params)
-    redirect_to performance_path(@performance)
+    if @performance.update(performance_params)
+      render :show
+    else
+      render_error
+    end
+      # redirect_to performance_path(@performance)
   end
 
   def destroy
     @performance.destroy
-    redirect_to performances_path
+    head :no_content
+    # redirect_to performances_path
   end
 
   def purchase
@@ -44,6 +50,11 @@ class Api::V1::PerformancesController < Api::V1::BaseController
   end
 
   def performance_params
-    params.require(:performance).permit(:name, :venue, :price, :description, :image_url, :date)
+    params.require(:performance).permit(:name, :venue, :price, :description, :image_url, :date, :user_id)
+  end
+
+  def render_error
+    render json: { errors: @performance.errors.full_messages },
+      status: :unprocessable_entity
   end
 end
