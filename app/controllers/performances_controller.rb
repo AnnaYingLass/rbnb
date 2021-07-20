@@ -1,6 +1,10 @@
 class PerformancesController < ApplicationController
   before_action :set_performance, only: [ :show, :edit, :update, :destroy ]
 
+  def index
+    @performances = Performance.all
+  end
+
   def show
   end
 
