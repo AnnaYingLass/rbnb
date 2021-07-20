@@ -1,5 +1,5 @@
 class PerformancesController < ApplicationController
-  before_action :set_performance, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_performance, only: [ :show, :edit, :update, :destroy, :purchase ]
 
   def index
     @performances = Performance.all
@@ -35,6 +35,7 @@ class PerformancesController < ApplicationController
   end
 
   def purchase
+    redirect_to performances_path
   end
 
   private
