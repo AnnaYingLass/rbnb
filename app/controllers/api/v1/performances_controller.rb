@@ -16,7 +16,6 @@ class Api::V1::PerformancesController < Api::V1::BaseController
     @performance = Performance.new(performance_params)
     if @performance.save
       render :show, status: :created
-      # redirect_to performances_path
     else
       render_error
     end
@@ -31,13 +30,11 @@ class Api::V1::PerformancesController < Api::V1::BaseController
     else
       render_error
     end
-      # redirect_to performance_path(@performance)
   end
 
   def destroy
     @performance.destroy
     head :no_content
-    # redirect_to performances_path
   end
 
   def purchase
@@ -51,7 +48,7 @@ class Api::V1::PerformancesController < Api::V1::BaseController
   end
 
   def performance_params
-    params.require(:performance).permit(:name, :venue, :price, :description, :image_url, :date, :user_id)
+    params.require(:performance).permit(:name, :venue, :price, :description, :image_url, :date, :user_id, :city, :highlight)
   end
 
   def render_error
