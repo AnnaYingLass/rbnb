@@ -38,7 +38,6 @@ class Api::V1::PerformancesController < Api::V1::BaseController
   end
 
   def purchase
-    redirect_to performances_path
   end
 
   private
