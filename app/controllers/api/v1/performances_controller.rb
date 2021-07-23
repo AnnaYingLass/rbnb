@@ -47,7 +47,7 @@ class Api::V1::PerformancesController < Api::V1::BaseController
   end
 
   def performance_params
-    params.require(:performance).permit(:name, :venue, :price, :description, :image_url, :date, :user_id, :city, :highlight)
+    params.require(:performance).permit(:name, :venue, :price, :description, :image_url, :date, :city, :highlight)
   end
 
   def render_error

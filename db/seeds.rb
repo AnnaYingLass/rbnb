@@ -15,7 +15,7 @@ Performance.destroy_all
     image_url: Faker::Internet.url
   )
 
-  Performance.create!(
+  performance = Performance.create!(
     name: Faker::Movie.title,
     venue: Faker::Address.full_address,
     price: Faker::Commerce.price,
